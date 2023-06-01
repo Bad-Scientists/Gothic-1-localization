@@ -1,6 +1,11 @@
 ---
 name: "release"
 
+on:
+  # push:
+  #   branches:
+  #     - "master"
+
 jobs:
   pre-release:
     name: "Release"
