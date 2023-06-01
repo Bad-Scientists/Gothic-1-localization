@@ -17,9 +17,6 @@ jobs:
       - name: "Generate language versions"
         run: |
           ./dacode -t .translations/ -c Scripts/ -i cp1252 -o release/
-      - name: "ls"
-        run: |
-          ls release
       - name: "Prepare a release"
         run: |
           #!/bin/bash
