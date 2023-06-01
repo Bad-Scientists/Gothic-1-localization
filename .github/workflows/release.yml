@@ -19,14 +19,33 @@ jobs:
           ./dacode -t .translations/ -c Scripts/ -i cp1252 -o release/
       - name: "Prepare a release"
         run: |
-          ls release/
+          #!/bin/bash
 
-      # - uses: "marvinpinto/action-automatic-releases@latest"
-      #   with:
-      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
-      #     automatic_release_tag: "latest"
-      #     prerelease: true
-      #     title: "Development Build"
-      #     files: |
-      #       LICENSE.txt
-      #       *.jar
+          SOURCE_DIR="./release"
+          TARGET_DIR="../zipped"
+
+          # Create the target directory if it doesn't exist
+          mkdir -p "$TARGET_DIR"
+
+          # Loop through the directories in the source directory
+          for dir in "$SOURCE_DIR"/*; do
+          # Check if the item is a directory
+          if [ -d "$dir" ]; then
+          # Extract the directory name
+          dir_name=$(basename "$dir")
+
+          # Change the working directory to the parent directory of the directory to compress
+          cd "$(dirname "$dir")"
+          # Compress the directory into a zip file
+          zip_file="$TARGET_DIR/$dir_name.zip"
+          zip -r -q "$zip_file" "$dir_name"
+          echo "Compressed $dir_name to $zip_file"
+          # Change the working directory back to the original directory
+          cd - > /dev/null
+          fi
+          done
+      - name: "Release"
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+             ./zipped/*.zip
