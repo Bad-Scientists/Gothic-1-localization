@@ -16,7 +16,10 @@ jobs:
         uses: actions/checkout@v3
       - name: "Generate language versions"
         run: |
-          ./dacode
+          ./dacode -t .translations/ -c Scripts/ -i utf8 -o release/
+      - name: "Prepare a release"
+        run: |
+          ls release/
 
       # - uses: "marvinpinto/action-automatic-releases@latest"
       #   with:
