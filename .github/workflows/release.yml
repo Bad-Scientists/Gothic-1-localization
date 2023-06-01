@@ -17,12 +17,15 @@ jobs:
       - name: "Generate language versions"
         run: |
           ./dacode -t .translations/ -c Scripts/ -i cp1252 -o release/
+      - name: "ls"
+        run: |
+          ls
       - name: "Prepare a release"
         run: |
           #!/bin/bash
 
           SOURCE_DIR="./release"
-          TARGET_DIR="./zipped"
+          TARGET_DIR="../zipped"
 
           # Create the target directory if it doesn't exist
           mkdir -p "$TARGET_DIR"
@@ -38,7 +41,7 @@ jobs:
             cd "$(dirname "$dir")"
             # Compress the directory into a zip file
             zip_file="$TARGET_DIR/$dir_name.zip"
-            zip -r -q "$zip_file" "$dir_name"
+            zip -r -q -v "$zip_file" "$dir_name"
             echo "Compressed $dir_name to $zip_file"
             # Change the working directory back to the original directory
             cd - > /dev/null
