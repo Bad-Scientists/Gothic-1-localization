@@ -54,3 +54,4 @@ jobs:
           artifacts: "zipped/*.zip"
           bodyFile: "body.md"
           tag: "release"
+          name: "Automatic release"
