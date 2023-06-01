@@ -39,7 +39,7 @@ jobs:
             cd "$(dirname "$dir")"
             # Compress the directory into a zip file
             zip_file="$TARGET_DIR/$dir_name.zip"
-            zip -r -q -v "$zip_file" "$dir_name"
+            zip -r -q "$zip_file" "$dir_name"
             echo "Compressed $dir_name to $zip_file"
             # Change the working directory back to the original directory
             cd - > /dev/null
