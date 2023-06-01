@@ -1,10 +1,9 @@
 ---
 name: "release"
 
+# Run only manually for now
 on:
-  # push:
-  #   branches:
-  #     - "master"
+  workflow_dispatch
 
 jobs:
   pre-release:
