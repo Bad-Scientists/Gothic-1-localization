@@ -45,16 +45,24 @@ jobs:
             cd - > /dev/null
           fi
           done
-      # - name: "Release"
+      - name: "Release"
       #   uses: softprops/action-gh-release@v1
       #   with:
       #     files: |
       #        ./zipped/*.zip
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Continuous Build"
-          files: |
-            ./zipped/*.zip
+
+      # - uses: "marvinpinto/action-automatic-releases@latest"
+      #   with:
+      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
+      #     automatic_release_tag: "latest"
+      #     prerelease: true
+      #     title: "Continuous Build"
+      #     files: |
+      #       ./zipped/*.zip
+
+        run: |
+          echo "# Automatically substituted scripts" > body.md
+      - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "zipped/*.zip"
+        bodyFile: "body.md"
