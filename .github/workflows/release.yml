@@ -22,6 +22,7 @@ jobs:
           #!/bin/bash
 
           SOURCE_DIR="./release"
+          # This is ugly, but works for now :kekw:
           TARGET_DIR="../zipped"
 
           # Create the target directory if it doesn't exist
