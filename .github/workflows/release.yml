@@ -11,10 +11,12 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-      # ...
+      # ..
+      - name: "Checkout repo"
+        uses: actions/checkout@latests
       - name: "Generate language versions"
         run: |
-          ls
+          ./dacode
 
       # - uses: "marvinpinto/action-automatic-releases@latest"
       #   with:
