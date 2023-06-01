@@ -28,7 +28,7 @@ jobs:
           TARGET_DIR="../zipped"
 
           # Create the target directory if it doesn't exist
-          mkdir -p "$TARGET_DIR"
+          mkdir -p "./zipped"
 
           # Loop through the directories in the source directory
           for dir in "$SOURCE_DIR"/*; do
