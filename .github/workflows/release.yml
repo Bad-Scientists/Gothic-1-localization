@@ -45,9 +45,10 @@ jobs:
             cd - > /dev/null
           fi
           done
-      - name: "Release"
+      - name: "Generate body"
         run: |
           echo "# Automatically substituted scripts" > body.md
+      - name: "Release"
         uses: ncipollo/release-action@v1
         with:
           artifacts: "zipped/*.zip"
