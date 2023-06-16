@@ -54,7 +54,7 @@ jobs:
           tag_template: 'dd.mm.yyyy.i'
       - name: "Generate body"
         run: |
-          echo "# Gothic 1 - Localized" > body.md
+          printf "# Gothic 1 - Localized\nGothic 1 scripts in all languages hosted on my instance of [weblate](https://weblate.cokoliv.eu/projects/gothic-1/#languages)" > body.md
       - name: "Release"
         uses: ncipollo/release-action@v1
         with:
